@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardActions, CardContent, CardMedia, Container, Pagination, Typography } from '@mui/material'
+import { Box, Button, Card, CardActions, CardContent, CardMedia, Pagination, Typography } from '@mui/material'
 import axios from 'axios'
 import React, { useCallback, useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
@@ -15,7 +15,7 @@ const Products = ({ name, search }) => {
                 setData(res.data.products)
             }
             else {
-                if (name == '') {
+                if (name === '') {
                     const res = await axios.get("https://dummyjson.com/products")
                     setData(res.data.products)
 

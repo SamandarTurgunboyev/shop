@@ -1,12 +1,11 @@
 import * as React from 'react';
-import { styled, useTheme } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -16,7 +15,6 @@ import axios from 'axios';
 import Products from '../products/Products';
 import { Link, Route, Routes } from 'react-router-dom';
 import Element from '../element/Element';
-import Search from '../search/Search';
 
 const drawerWidth = 240;
 
@@ -135,7 +133,7 @@ export default function Category() {
                     </Link>
                     {data.map((e) => (
                         <>
-                            {e == name ?
+                            {e === name ?
                                 <ListItem key={e} disablePadding onClick={() => setName(e)} sx={{ color: "blue" }}>
                                     <Link to='/' style={{ color: 'black', textDecoration: 'none' }}>
                                         <ListItemButton>
