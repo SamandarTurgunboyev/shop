@@ -7,7 +7,6 @@ const Element = () => {
     const { id } = useParams()
     const [value, setValue] = useState(0);
     const [data, setData] = useState([])
-    console.log(data);
     const getApi = useCallback(async () => {
         try {
             const res = await axios.get(`https://dummyjson.com/products/${id}`)

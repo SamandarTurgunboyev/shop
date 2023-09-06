@@ -15,6 +15,8 @@ import axios from 'axios';
 import Products from '../products/Products';
 import { Link, Route, Routes } from 'react-router-dom';
 import Element from '../element/Element';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import AddProducts from '../addProducts/AddProducts';
 
 const drawerWidth = 240;
 
@@ -87,6 +89,15 @@ export default function Category() {
     React.useEffect(() => {
         getApi()
     }, [])
+
+    const [add, setAdd] = React.useState([])
+    const dub = [...new Set(add)]
+    console.log(dub);
+
+    const hadleAdd = (e) => {
+        setAdd([...add, e])
+    }
+
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
@@ -102,6 +113,9 @@ export default function Category() {
                         Category
                     </IconButton>
                     <TextField fullWidth label="Search" color='warning' onChange={(e) => setSearch(e.target.value)} />
+                    <Link to='/add' style={{ color: 'black' }}>
+                        <ShoppingCartIcon sx={{ fontSize: "30px" }} />
+                    </Link>
                 </Toolbar>
             </AppBar>
             <Drawer
@@ -157,8 +171,9 @@ export default function Category() {
             <Main open={open}>
                 <DrawerHeader />
                 <Routes>
-                    <Route path='/' element={<Products name={name} search={search} />} />
+                    <Route path='/' element={<Products name={name} search={search} add={hadleAdd} />} />
                     <Route path='/:id' element={<Element />} />
+                    <Route path='/add' element={<AddProducts id={dub} add={hadleAdd} />} />
                 </Routes>
             </Main>
         </Box>
